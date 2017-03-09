@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6ff97335ad26472988e14c830db9b80c" Name="Diagram1">
+        <EntityTypeShape EntityType="TeamManager_NMOModel.sysdiagram" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamManager_NMOModel.tblAccessDetail" Width="1.5" PointX="3.75" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamManager_NMOModel.tblApplication" Width="1.5" PointX="0.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamManager_NMOModel.tblApplicationAccessRelationship" Width="1.5" PointX="6" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamManager_NMOModel.tblApplicationSupport" Width="1.5" PointX="3" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamManager_NMOModel.tblBillingRateInfo" Width="1.5" PointX="3" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamManager_NMOModel.tblHoliday" Width="1.5" PointX="3.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamManager_NMOModel.tblLeaveType" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamManager_NMOModel.tblMemberAccess" Width="1.5" PointX="6" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamManager_NMOModel.tblMemberdetail" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamManager_NMOModel.tblMemberLeaveDetail" Width="1.5" PointX="6" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamManager_NMOModel.tblPager" Width="1.5" PointX="0.75" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamManager_NMOModel.tblProjectCodeForMember" Width="1.5" PointX="6" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamManager_NMOModel.tblProjectCode" Width="1.5" PointX="3.75" PointY="28.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamManager_NMOModel.tblRegion" Width="1.5" PointX="3.75" PointY="34.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamManager_NMOModel.tblRegionsHoliday" Width="1.5" PointX="6" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamManager_NMOModel.tblTimeSheetBooking" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamManager_NMOModel.tblTimeSheetStatu" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamManager_NMOModel.tblPagerPlan" Width="1.5" PointX="3" PointY="20.75" IsExpanded="true" />
+        <AssociationConnector Association="TeamManager_NMOModel.FK_tblApplicationAccessRelationship_tblAccessDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamManager_NMOModel.FK_tblMemberAccess_tblAccessDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamManager_NMOModel.FK_tblApplicationAccessRelationship_tblApplication" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamManager_NMOModel.FK_tblApplicationSupport_tblApplication" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamManager_NMOModel.FK_tblMemberAccess_tblApplication" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamManager_NMOModel.FK_tblPager_tblApplication" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamManager_NMOModel.FK_tblApplicationSupport_tblMemberdetails" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamManager_NMOModel.FK_tblBillingRateInfo_tblMemberdetails" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamManager_NMOModel.FK_tblMemberLeaveDetails_tblHolidays" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamManager_NMOModel.FK_tblRegionsHolidays_tblHolidays" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamManager_NMOModel.FK_tblMemberLeaveDetails_tblLeaveType" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamManager_NMOModel.FK_tblMemberAccess_tblMemberdetails" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamManager_NMOModel.FK_tblMemberLeaveDetails_tblMemberdetails" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamManager_NMOModel.FK_tblPagerPlan_tblMemberdetails" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamManager_NMOModel.FK_tblProjectCodeForMembers_tblMemberdetails" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamManager_NMOModel.FK_tblTimeSheetBooking_tblMemberdetails" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamManager_NMOModel.FK_tblPagerPlan_tblPager" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamManager_NMOModel.FK_tblProjectCodeForMembers_tblProjectCodes" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamManager_NMOModel.FK_tblRegionsHolidays_tblRegions" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamManager_NMOModel.FK_tblTimeSheetBooking_tblTimeSheetStatus" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

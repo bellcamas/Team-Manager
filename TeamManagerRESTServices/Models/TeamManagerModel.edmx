@@ -1,0 +1,1494 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TeamManager_NMOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tblAccessDetails">
+          <Key>
+            <PropertyRef Name="AccessId" />
+          </Key>
+          <Property Name="AccessId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccessName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsDefault" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblApplication">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+          </Key>
+          <Property Name="ApplicationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ApplicationName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblApplicationAccessRelationship">
+          <Key>
+            <PropertyRef Name="ApplicationAccessRelationshipID" />
+          </Key>
+          <Property Name="ApplicationAccessRelationshipID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ApplicationId" Type="int" Nullable="false" />
+          <Property Name="AccessId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblApplicationSupport">
+          <Key>
+            <PropertyRef Name="ApplicatioSupportId" />
+          </Key>
+          <Property Name="ApplicatioSupportId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberId" Type="int" Nullable="false" />
+          <Property Name="ApplicationId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblBillingRateInfo">
+          <Key>
+            <PropertyRef Name="BillingRateId" />
+          </Key>
+          <Property Name="BillingRateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberId" Type="int" Nullable="false" />
+          <Property Name="Rate" Type="money" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="EndDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblHolidays">
+          <Key>
+            <PropertyRef Name="HolidayId" />
+          </Key>
+          <Property Name="HolidayId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HolidayName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Country" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Day" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="isActive" Type="bit" Nullable="false" />
+          <Property Name="IsMandatory" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblLeaveType">
+          <Key>
+            <PropertyRef Name="LeaveTypeID" />
+          </Key>
+          <Property Name="LeaveTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LeaveType" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="IsActive" Type="int" />
+        </EntityType>
+        <EntityType Name="tblMemberAccess">
+          <Key>
+            <PropertyRef Name="MemberAccessId" />
+          </Key>
+          <Property Name="MemberAccessId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberId" Type="int" Nullable="false" />
+          <Property Name="ApplicationId" Type="int" Nullable="false" />
+          <Property Name="AccessId" Type="int" Nullable="false" />
+          <Property Name="IsHavingAccess" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblMemberdetails">
+          <Key>
+            <PropertyRef Name="MemberId" />
+          </Key>
+          <Property Name="MemberId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PsaId" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CgiLanId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BellNtId" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="BellPein" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="EmailId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MangerId" Type="int" Nullable="false" />
+          <Property Name="LaptopNumber" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="MobileNumber" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="MsnId" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CgiJoinDate" Type="date" Nullable="false" />
+          <Property Name="ProjectJoinDate" Type="date" Nullable="false" />
+          <Property Name="IsReleasedFromProject" Type="bit" Nullable="false" />
+          <Property Name="ProjectRelivingDate" Type="date" />
+          <Property Name="InCgi" Type="bit" Nullable="false" />
+          <Property Name="CgiRelievingDate" Type="date" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="IsResourceManager" Type="bit" Nullable="false" />
+          <Property Name="IsSelfManager" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblMemberLeaveDetails">
+          <Key>
+            <PropertyRef Name="EntryID" />
+          </Key>
+          <Property Name="EntryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberID" Type="int" />
+          <Property Name="LeaveTypeID" Type="int" />
+          <Property Name="Year" Type="datetime" />
+          <Property Name="HolidayID" Type="int" />
+          <Property Name="LeaveStartDate" Type="datetime" />
+          <Property Name="LeaveEndDate" Type="datetime" />
+          <Property Name="ApprovedBy" Type="int" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="IsActive" Type="int" />
+        </EntityType>
+        <EntityType Name="tblPager">
+          <Key>
+            <PropertyRef Name="PagerId" />
+          </Key>
+          <Property Name="PagerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ApplicationId" Type="int" Nullable="false" />
+          <Property Name="PagerNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PagerEmailId" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TeamManager_NMO.dbo.tblPagerPlan' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblPagerPlan">
+          <Key>
+            <PropertyRef Name="PagerPlanId" />
+            <PropertyRef Name="MemberId" />
+            <PropertyRef Name="PagerId" />
+            <PropertyRef Name="StartDate" />
+            <PropertyRef Name="EndDate" />
+          </Key>
+          <Property Name="PagerPlanId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberId" Type="int" Nullable="false" />
+          <Property Name="PagerId" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="EndDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblProjectCodeForMembers">
+          <Key>
+            <PropertyRef Name="DefaultTimesheetID" />
+          </Key>
+          <Property Name="DefaultTimesheetID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectCodeID" Type="int" />
+          <Property Name="MemberID" Type="int" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="IsActive" Type="int" />
+        </EntityType>
+        <EntityType Name="tblProjectCodes">
+          <Key>
+            <PropertyRef Name="ProjectCodeID" />
+          </Key>
+          <Property Name="ProjectCodeID" Type="int" Nullable="false" />
+          <Property Name="ProjectCode" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ProjectDescription" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="TrackingParameterName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TotalFunds" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="UsedFunds" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="RemainingFunds" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="PerMonthLimit" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CanCrossMonthLimit" Type="bit" />
+          <Property Name="IsClosed" Type="bit" />
+          <Property Name="IsDefaultCode" Type="bit" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="IsActive" Type="int" />
+        </EntityType>
+        <EntityType Name="tblRegions">
+          <Key>
+            <PropertyRef Name="RegionId" />
+          </Key>
+          <Property Name="RegionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RegionName" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblRegionsHolidays">
+          <Key>
+            <PropertyRef Name="RegionHoildayRelationshipId" />
+          </Key>
+          <Property Name="RegionHoildayRelationshipId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HolidayId" Type="int" Nullable="false" />
+          <Property Name="RegionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblTimeSheetBooking">
+          <Key>
+            <PropertyRef Name="TimeSheetID" />
+          </Key>
+          <Property Name="TimeSheetID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="MemberID" Type="int" />
+          <Property Name="Type" Type="bit" />
+          <Property Name="Hours" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="StatusID" Type="int" />
+          <Property Name="WeekEndingDate" Type="datetime" />
+          <Property Name="ApprovedBy" Type="int" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="IsActive" Type="int" />
+        </EntityType>
+        <EntityType Name="tblTimeSheetStatus">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="IsActive" Type="int" />
+        </EntityType>
+        <Association Name="FK_tblApplicationAccessRelationship_tblAccessDetails">
+          <End Role="tblAccessDetails" Type="Self.tblAccessDetails" Multiplicity="1" />
+          <End Role="tblApplicationAccessRelationship" Type="Self.tblApplicationAccessRelationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAccessDetails">
+              <PropertyRef Name="AccessId" />
+            </Principal>
+            <Dependent Role="tblApplicationAccessRelationship">
+              <PropertyRef Name="AccessId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblApplicationAccessRelationship_tblApplication">
+          <End Role="tblApplication" Type="Self.tblApplication" Multiplicity="1" />
+          <End Role="tblApplicationAccessRelationship" Type="Self.tblApplicationAccessRelationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblApplication">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="tblApplicationAccessRelationship">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblApplicationSupport_tblApplication">
+          <End Role="tblApplication" Type="Self.tblApplication" Multiplicity="1" />
+          <End Role="tblApplicationSupport" Type="Self.tblApplicationSupport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblApplication">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="tblApplicationSupport">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblApplicationSupport_tblMemberdetails">
+          <End Role="tblMemberdetails" Type="Self.tblMemberdetails" Multiplicity="1" />
+          <End Role="tblApplicationSupport" Type="Self.tblApplicationSupport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMemberdetails">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="tblApplicationSupport">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblBillingRateInfo_tblMemberdetails">
+          <End Role="tblMemberdetails" Type="Self.tblMemberdetails" Multiplicity="1" />
+          <End Role="tblBillingRateInfo" Type="Self.tblBillingRateInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMemberdetails">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="tblBillingRateInfo">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMemberAccess_tblAccessDetails">
+          <End Role="tblAccessDetails" Type="Self.tblAccessDetails" Multiplicity="1" />
+          <End Role="tblMemberAccess" Type="Self.tblMemberAccess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAccessDetails">
+              <PropertyRef Name="AccessId" />
+            </Principal>
+            <Dependent Role="tblMemberAccess">
+              <PropertyRef Name="AccessId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMemberAccess_tblApplication">
+          <End Role="tblApplication" Type="Self.tblApplication" Multiplicity="1" />
+          <End Role="tblMemberAccess" Type="Self.tblMemberAccess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblApplication">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="tblMemberAccess">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMemberAccess_tblMemberdetails">
+          <End Role="tblMemberdetails" Type="Self.tblMemberdetails" Multiplicity="1" />
+          <End Role="tblMemberAccess" Type="Self.tblMemberAccess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMemberdetails">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="tblMemberAccess">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMemberLeaveDetails_tblHolidays">
+          <End Role="tblHolidays" Type="Self.tblHolidays" Multiplicity="0..1" />
+          <End Role="tblMemberLeaveDetails" Type="Self.tblMemberLeaveDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHolidays">
+              <PropertyRef Name="HolidayId" />
+            </Principal>
+            <Dependent Role="tblMemberLeaveDetails">
+              <PropertyRef Name="HolidayID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMemberLeaveDetails_tblLeaveType">
+          <End Role="tblLeaveType" Type="Self.tblLeaveType" Multiplicity="0..1" />
+          <End Role="tblMemberLeaveDetails" Type="Self.tblMemberLeaveDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLeaveType">
+              <PropertyRef Name="LeaveTypeID" />
+            </Principal>
+            <Dependent Role="tblMemberLeaveDetails">
+              <PropertyRef Name="LeaveTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMemberLeaveDetails_tblMemberdetails">
+          <End Role="tblMemberdetails" Type="Self.tblMemberdetails" Multiplicity="0..1" />
+          <End Role="tblMemberLeaveDetails" Type="Self.tblMemberLeaveDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMemberdetails">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="tblMemberLeaveDetails">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPager_tblApplication">
+          <End Role="tblApplication" Type="Self.tblApplication" Multiplicity="1" />
+          <End Role="tblPager" Type="Self.tblPager" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblApplication">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="tblPager">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPagerPlan_tblMemberdetails">
+          <End Role="tblMemberdetails" Type="Self.tblMemberdetails" Multiplicity="1" />
+          <End Role="tblPagerPlan" Type="Self.tblPagerPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMemberdetails">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="tblPagerPlan">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPagerPlan_tblPager">
+          <End Role="tblPager" Type="Self.tblPager" Multiplicity="1" />
+          <End Role="tblPagerPlan" Type="Self.tblPagerPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPager">
+              <PropertyRef Name="PagerId" />
+            </Principal>
+            <Dependent Role="tblPagerPlan">
+              <PropertyRef Name="PagerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProjectCodeForMembers_tblMemberdetails">
+          <End Role="tblMemberdetails" Type="Self.tblMemberdetails" Multiplicity="0..1" />
+          <End Role="tblProjectCodeForMembers" Type="Self.tblProjectCodeForMembers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMemberdetails">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="tblProjectCodeForMembers">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProjectCodeForMembers_tblProjectCodes">
+          <End Role="tblProjectCodes" Type="Self.tblProjectCodes" Multiplicity="0..1" />
+          <End Role="tblProjectCodeForMembers" Type="Self.tblProjectCodeForMembers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProjectCodes">
+              <PropertyRef Name="ProjectCodeID" />
+            </Principal>
+            <Dependent Role="tblProjectCodeForMembers">
+              <PropertyRef Name="ProjectCodeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRegionsHolidays_tblHolidays">
+          <End Role="tblHolidays" Type="Self.tblHolidays" Multiplicity="1" />
+          <End Role="tblRegionsHolidays" Type="Self.tblRegionsHolidays" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHolidays">
+              <PropertyRef Name="HolidayId" />
+            </Principal>
+            <Dependent Role="tblRegionsHolidays">
+              <PropertyRef Name="HolidayId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRegionsHolidays_tblRegions">
+          <End Role="tblRegions" Type="Self.tblRegions" Multiplicity="1" />
+          <End Role="tblRegionsHolidays" Type="Self.tblRegionsHolidays" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRegions">
+              <PropertyRef Name="RegionId" />
+            </Principal>
+            <Dependent Role="tblRegionsHolidays">
+              <PropertyRef Name="RegionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTimeSheetBooking_tblMemberdetails">
+          <End Role="tblMemberdetails" Type="Self.tblMemberdetails" Multiplicity="0..1" />
+          <End Role="tblTimeSheetBooking" Type="Self.tblTimeSheetBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMemberdetails">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="tblTimeSheetBooking">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTimeSheetBooking_tblTimeSheetStatus">
+          <End Role="tblTimeSheetStatus" Type="Self.tblTimeSheetStatus" Multiplicity="0..1" />
+          <End Role="tblTimeSheetBooking" Type="Self.tblTimeSheetBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTimeSheetStatus">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="tblTimeSheetBooking">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TeamManager_NMOModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAccessDetails" EntityType="Self.tblAccessDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblApplication" EntityType="Self.tblApplication" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblApplicationAccessRelationship" EntityType="Self.tblApplicationAccessRelationship" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblApplicationSupport" EntityType="Self.tblApplicationSupport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBillingRateInfo" EntityType="Self.tblBillingRateInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblHolidays" EntityType="Self.tblHolidays" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblLeaveType" EntityType="Self.tblLeaveType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMemberAccess" EntityType="Self.tblMemberAccess" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMemberdetails" EntityType="Self.tblMemberdetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMemberLeaveDetails" EntityType="Self.tblMemberLeaveDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPager" EntityType="Self.tblPager" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProjectCodeForMembers" EntityType="Self.tblProjectCodeForMembers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProjectCodes" EntityType="Self.tblProjectCodes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRegions" EntityType="Self.tblRegions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRegionsHolidays" EntityType="Self.tblRegionsHolidays" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTimeSheetBooking" EntityType="Self.tblTimeSheetBooking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTimeSheetStatus" EntityType="Self.tblTimeSheetStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPagerPlan" EntityType="Self.tblPagerPlan" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblPagerPlan].[PagerPlanId] AS [PagerPlanId], 
+    [tblPagerPlan].[MemberId] AS [MemberId], 
+    [tblPagerPlan].[PagerId] AS [PagerId], 
+    [tblPagerPlan].[StartDate] AS [StartDate], 
+    [tblPagerPlan].[EndDate] AS [EndDate]
+    FROM [dbo].[tblPagerPlan] AS [tblPagerPlan]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_tblApplicationAccessRelationship_tblAccessDetails" Association="Self.FK_tblApplicationAccessRelationship_tblAccessDetails">
+            <End Role="tblAccessDetails" EntitySet="tblAccessDetails" />
+            <End Role="tblApplicationAccessRelationship" EntitySet="tblApplicationAccessRelationship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblApplicationAccessRelationship_tblApplication" Association="Self.FK_tblApplicationAccessRelationship_tblApplication">
+            <End Role="tblApplication" EntitySet="tblApplication" />
+            <End Role="tblApplicationAccessRelationship" EntitySet="tblApplicationAccessRelationship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblApplicationSupport_tblApplication" Association="Self.FK_tblApplicationSupport_tblApplication">
+            <End Role="tblApplication" EntitySet="tblApplication" />
+            <End Role="tblApplicationSupport" EntitySet="tblApplicationSupport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblApplicationSupport_tblMemberdetails" Association="Self.FK_tblApplicationSupport_tblMemberdetails">
+            <End Role="tblMemberdetails" EntitySet="tblMemberdetails" />
+            <End Role="tblApplicationSupport" EntitySet="tblApplicationSupport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblBillingRateInfo_tblMemberdetails" Association="Self.FK_tblBillingRateInfo_tblMemberdetails">
+            <End Role="tblMemberdetails" EntitySet="tblMemberdetails" />
+            <End Role="tblBillingRateInfo" EntitySet="tblBillingRateInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMemberAccess_tblAccessDetails" Association="Self.FK_tblMemberAccess_tblAccessDetails">
+            <End Role="tblAccessDetails" EntitySet="tblAccessDetails" />
+            <End Role="tblMemberAccess" EntitySet="tblMemberAccess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMemberAccess_tblApplication" Association="Self.FK_tblMemberAccess_tblApplication">
+            <End Role="tblApplication" EntitySet="tblApplication" />
+            <End Role="tblMemberAccess" EntitySet="tblMemberAccess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMemberAccess_tblMemberdetails" Association="Self.FK_tblMemberAccess_tblMemberdetails">
+            <End Role="tblMemberdetails" EntitySet="tblMemberdetails" />
+            <End Role="tblMemberAccess" EntitySet="tblMemberAccess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMemberLeaveDetails_tblHolidays" Association="Self.FK_tblMemberLeaveDetails_tblHolidays">
+            <End Role="tblHolidays" EntitySet="tblHolidays" />
+            <End Role="tblMemberLeaveDetails" EntitySet="tblMemberLeaveDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMemberLeaveDetails_tblLeaveType" Association="Self.FK_tblMemberLeaveDetails_tblLeaveType">
+            <End Role="tblLeaveType" EntitySet="tblLeaveType" />
+            <End Role="tblMemberLeaveDetails" EntitySet="tblMemberLeaveDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMemberLeaveDetails_tblMemberdetails" Association="Self.FK_tblMemberLeaveDetails_tblMemberdetails">
+            <End Role="tblMemberdetails" EntitySet="tblMemberdetails" />
+            <End Role="tblMemberLeaveDetails" EntitySet="tblMemberLeaveDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPager_tblApplication" Association="Self.FK_tblPager_tblApplication">
+            <End Role="tblApplication" EntitySet="tblApplication" />
+            <End Role="tblPager" EntitySet="tblPager" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPagerPlan_tblMemberdetails" Association="Self.FK_tblPagerPlan_tblMemberdetails">
+            <End Role="tblMemberdetails" EntitySet="tblMemberdetails" />
+            <End Role="tblPagerPlan" EntitySet="tblPagerPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPagerPlan_tblPager" Association="Self.FK_tblPagerPlan_tblPager">
+            <End Role="tblPager" EntitySet="tblPager" />
+            <End Role="tblPagerPlan" EntitySet="tblPagerPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProjectCodeForMembers_tblMemberdetails" Association="Self.FK_tblProjectCodeForMembers_tblMemberdetails">
+            <End Role="tblMemberdetails" EntitySet="tblMemberdetails" />
+            <End Role="tblProjectCodeForMembers" EntitySet="tblProjectCodeForMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProjectCodeForMembers_tblProjectCodes" Association="Self.FK_tblProjectCodeForMembers_tblProjectCodes">
+            <End Role="tblProjectCodes" EntitySet="tblProjectCodes" />
+            <End Role="tblProjectCodeForMembers" EntitySet="tblProjectCodeForMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRegionsHolidays_tblHolidays" Association="Self.FK_tblRegionsHolidays_tblHolidays">
+            <End Role="tblHolidays" EntitySet="tblHolidays" />
+            <End Role="tblRegionsHolidays" EntitySet="tblRegionsHolidays" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRegionsHolidays_tblRegions" Association="Self.FK_tblRegionsHolidays_tblRegions">
+            <End Role="tblRegions" EntitySet="tblRegions" />
+            <End Role="tblRegionsHolidays" EntitySet="tblRegionsHolidays" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTimeSheetBooking_tblMemberdetails" Association="Self.FK_tblTimeSheetBooking_tblMemberdetails">
+            <End Role="tblMemberdetails" EntitySet="tblMemberdetails" />
+            <End Role="tblTimeSheetBooking" EntitySet="tblTimeSheetBooking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTimeSheetBooking_tblTimeSheetStatus" Association="Self.FK_tblTimeSheetBooking_tblTimeSheetStatus">
+            <End Role="tblTimeSheetStatus" EntitySet="tblTimeSheetStatus" />
+            <End Role="tblTimeSheetBooking" EntitySet="tblTimeSheetBooking" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TeamManager_NMOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblAccessDetail">
+          <Key>
+            <PropertyRef Name="AccessId" />
+          </Key>
+          <Property Name="AccessId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccessName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblApplicationAccessRelationships" Relationship="Self.FK_tblApplicationAccessRelationship_tblAccessDetails" FromRole="tblAccessDetails" ToRole="tblApplicationAccessRelationship" />
+          <NavigationProperty Name="tblMemberAccesses" Relationship="Self.FK_tblMemberAccess_tblAccessDetails" FromRole="tblAccessDetails" ToRole="tblMemberAccess" />
+        </EntityType>
+        <EntityType Name="tblApplication">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+          </Key>
+          <Property Name="ApplicationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ApplicationName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblApplicationAccessRelationships" Relationship="Self.FK_tblApplicationAccessRelationship_tblApplication" FromRole="tblApplication" ToRole="tblApplicationAccessRelationship" />
+          <NavigationProperty Name="tblApplicationSupports" Relationship="Self.FK_tblApplicationSupport_tblApplication" FromRole="tblApplication" ToRole="tblApplicationSupport" />
+          <NavigationProperty Name="tblMemberAccesses" Relationship="Self.FK_tblMemberAccess_tblApplication" FromRole="tblApplication" ToRole="tblMemberAccess" />
+          <NavigationProperty Name="tblPagers" Relationship="Self.FK_tblPager_tblApplication" FromRole="tblApplication" ToRole="tblPager" />
+        </EntityType>
+        <EntityType Name="tblApplicationAccessRelationship">
+          <Key>
+            <PropertyRef Name="ApplicationAccessRelationshipID" />
+          </Key>
+          <Property Name="ApplicationAccessRelationshipID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ApplicationId" Type="Int32" Nullable="false" />
+          <Property Name="AccessId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblAccessDetail" Relationship="Self.FK_tblApplicationAccessRelationship_tblAccessDetails" FromRole="tblApplicationAccessRelationship" ToRole="tblAccessDetails" />
+          <NavigationProperty Name="tblApplication" Relationship="Self.FK_tblApplicationAccessRelationship_tblApplication" FromRole="tblApplicationAccessRelationship" ToRole="tblApplication" />
+        </EntityType>
+        <EntityType Name="tblApplicationSupport">
+          <Key>
+            <PropertyRef Name="ApplicatioSupportId" />
+          </Key>
+          <Property Name="ApplicatioSupportId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="Int32" Nullable="false" />
+          <Property Name="ApplicationId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblApplication" Relationship="Self.FK_tblApplicationSupport_tblApplication" FromRole="tblApplicationSupport" ToRole="tblApplication" />
+          <NavigationProperty Name="tblMemberdetail" Relationship="Self.FK_tblApplicationSupport_tblMemberdetails" FromRole="tblApplicationSupport" ToRole="tblMemberdetails" />
+        </EntityType>
+        <EntityType Name="tblBillingRateInfo">
+          <Key>
+            <PropertyRef Name="BillingRateId" />
+          </Key>
+          <Property Name="BillingRateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="Int32" Nullable="false" />
+          <Property Name="Rate" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="tblMemberdetail" Relationship="Self.FK_tblBillingRateInfo_tblMemberdetails" FromRole="tblBillingRateInfo" ToRole="tblMemberdetails" />
+        </EntityType>
+        <EntityType Name="tblHoliday">
+          <Key>
+            <PropertyRef Name="HolidayId" />
+          </Key>
+          <Property Name="HolidayId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HolidayName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Day" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="isActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsMandatory" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblMemberLeaveDetails" Relationship="Self.FK_tblMemberLeaveDetails_tblHolidays" FromRole="tblHolidays" ToRole="tblMemberLeaveDetails" />
+          <NavigationProperty Name="tblRegionsHolidays" Relationship="Self.FK_tblRegionsHolidays_tblHolidays" FromRole="tblHolidays" ToRole="tblRegionsHolidays" />
+        </EntityType>
+        <EntityType Name="tblLeaveType">
+          <Key>
+            <PropertyRef Name="LeaveTypeID" />
+          </Key>
+          <Property Name="LeaveTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LeaveType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Int32" />
+          <NavigationProperty Name="tblMemberLeaveDetails" Relationship="Self.FK_tblMemberLeaveDetails_tblLeaveType" FromRole="tblLeaveType" ToRole="tblMemberLeaveDetails" />
+        </EntityType>
+        <EntityType Name="tblMemberAccess">
+          <Key>
+            <PropertyRef Name="MemberAccessId" />
+          </Key>
+          <Property Name="MemberAccessId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="Int32" Nullable="false" />
+          <Property Name="ApplicationId" Type="Int32" Nullable="false" />
+          <Property Name="AccessId" Type="Int32" Nullable="false" />
+          <Property Name="IsHavingAccess" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblAccessDetail" Relationship="Self.FK_tblMemberAccess_tblAccessDetails" FromRole="tblMemberAccess" ToRole="tblAccessDetails" />
+          <NavigationProperty Name="tblApplication" Relationship="Self.FK_tblMemberAccess_tblApplication" FromRole="tblMemberAccess" ToRole="tblApplication" />
+          <NavigationProperty Name="tblMemberdetail" Relationship="Self.FK_tblMemberAccess_tblMemberdetails" FromRole="tblMemberAccess" ToRole="tblMemberdetails" />
+        </EntityType>
+        <EntityType Name="tblMemberdetail">
+          <Key>
+            <PropertyRef Name="MemberId" />
+          </Key>
+          <Property Name="MemberId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PsaId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CgiLanId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BellNtId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BellPein" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MangerId" Type="Int32" Nullable="false" />
+          <Property Name="LaptopNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MobileNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MsnId" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CgiJoinDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ProjectJoinDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IsReleasedFromProject" Type="Boolean" Nullable="false" />
+          <Property Name="ProjectRelivingDate" Type="DateTime" Precision="0" />
+          <Property Name="InCgi" Type="Boolean" Nullable="false" />
+          <Property Name="CgiRelievingDate" Type="DateTime" Precision="0" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="IsResourceManager" Type="Boolean" Nullable="false" />
+          <Property Name="IsSelfManager" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblApplicationSupports" Relationship="Self.FK_tblApplicationSupport_tblMemberdetails" FromRole="tblMemberdetails" ToRole="tblApplicationSupport" />
+          <NavigationProperty Name="tblBillingRateInfoes" Relationship="Self.FK_tblBillingRateInfo_tblMemberdetails" FromRole="tblMemberdetails" ToRole="tblBillingRateInfo" />
+          <NavigationProperty Name="tblMemberAccesses" Relationship="Self.FK_tblMemberAccess_tblMemberdetails" FromRole="tblMemberdetails" ToRole="tblMemberAccess" />
+          <NavigationProperty Name="tblMemberLeaveDetails" Relationship="Self.FK_tblMemberLeaveDetails_tblMemberdetails" FromRole="tblMemberdetails" ToRole="tblMemberLeaveDetails" />
+          <NavigationProperty Name="tblPagerPlans" Relationship="Self.FK_tblPagerPlan_tblMemberdetails" FromRole="tblMemberdetails" ToRole="tblPagerPlan" />
+          <NavigationProperty Name="tblProjectCodeForMembers" Relationship="Self.FK_tblProjectCodeForMembers_tblMemberdetails" FromRole="tblMemberdetails" ToRole="tblProjectCodeForMembers" />
+          <NavigationProperty Name="tblTimeSheetBookings" Relationship="Self.FK_tblTimeSheetBooking_tblMemberdetails" FromRole="tblMemberdetails" ToRole="tblTimeSheetBooking" />
+        </EntityType>
+        <EntityType Name="tblMemberLeaveDetail">
+          <Key>
+            <PropertyRef Name="EntryID" />
+          </Key>
+          <Property Name="EntryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberID" Type="Int32" />
+          <Property Name="LeaveTypeID" Type="Int32" />
+          <Property Name="Year" Type="DateTime" Precision="3" />
+          <Property Name="HolidayID" Type="Int32" />
+          <Property Name="LeaveStartDate" Type="DateTime" Precision="3" />
+          <Property Name="LeaveEndDate" Type="DateTime" Precision="3" />
+          <Property Name="ApprovedBy" Type="Int32" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Int32" />
+          <NavigationProperty Name="tblHoliday" Relationship="Self.FK_tblMemberLeaveDetails_tblHolidays" FromRole="tblMemberLeaveDetails" ToRole="tblHolidays" />
+          <NavigationProperty Name="tblLeaveType" Relationship="Self.FK_tblMemberLeaveDetails_tblLeaveType" FromRole="tblMemberLeaveDetails" ToRole="tblLeaveType" />
+          <NavigationProperty Name="tblMemberdetail" Relationship="Self.FK_tblMemberLeaveDetails_tblMemberdetails" FromRole="tblMemberLeaveDetails" ToRole="tblMemberdetails" />
+        </EntityType>
+        <EntityType Name="tblPager">
+          <Key>
+            <PropertyRef Name="PagerId" />
+          </Key>
+          <Property Name="PagerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ApplicationId" Type="Int32" Nullable="false" />
+          <Property Name="PagerNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PagerEmailId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tblApplication" Relationship="Self.FK_tblPager_tblApplication" FromRole="tblPager" ToRole="tblApplication" />
+          <NavigationProperty Name="tblPagerPlans" Relationship="Self.FK_tblPagerPlan_tblPager" FromRole="tblPager" ToRole="tblPagerPlan" />
+        </EntityType>
+        <EntityType Name="tblProjectCodeForMember">
+          <Key>
+            <PropertyRef Name="DefaultTimesheetID" />
+          </Key>
+          <Property Name="DefaultTimesheetID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectCodeID" Type="Int32" />
+          <Property Name="MemberID" Type="Int32" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Int32" />
+          <NavigationProperty Name="tblMemberdetail" Relationship="Self.FK_tblProjectCodeForMembers_tblMemberdetails" FromRole="tblProjectCodeForMembers" ToRole="tblMemberdetails" />
+          <NavigationProperty Name="tblProjectCode" Relationship="Self.FK_tblProjectCodeForMembers_tblProjectCodes" FromRole="tblProjectCodeForMembers" ToRole="tblProjectCodes" />
+        </EntityType>
+        <EntityType Name="tblProjectCode">
+          <Key>
+            <PropertyRef Name="ProjectCodeID" />
+          </Key>
+          <Property Name="ProjectCodeID" Type="Int32" Nullable="false" />
+          <Property Name="ProjectCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProjectDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TrackingParameterName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TotalFunds" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="UsedFunds" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="RemainingFunds" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="PerMonthLimit" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CanCrossMonthLimit" Type="Boolean" />
+          <Property Name="IsClosed" Type="Boolean" />
+          <Property Name="IsDefaultCode" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Int32" />
+          <NavigationProperty Name="tblProjectCodeForMembers" Relationship="Self.FK_tblProjectCodeForMembers_tblProjectCodes" FromRole="tblProjectCodes" ToRole="tblProjectCodeForMembers" />
+        </EntityType>
+        <EntityType Name="tblRegion">
+          <Key>
+            <PropertyRef Name="RegionId" />
+          </Key>
+          <Property Name="RegionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegionName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblRegionsHolidays" Relationship="Self.FK_tblRegionsHolidays_tblRegions" FromRole="tblRegions" ToRole="tblRegionsHolidays" />
+        </EntityType>
+        <EntityType Name="tblRegionsHoliday">
+          <Key>
+            <PropertyRef Name="RegionHoildayRelationshipId" />
+          </Key>
+          <Property Name="RegionHoildayRelationshipId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HolidayId" Type="Int32" Nullable="false" />
+          <Property Name="RegionId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblHoliday" Relationship="Self.FK_tblRegionsHolidays_tblHolidays" FromRole="tblRegionsHolidays" ToRole="tblHolidays" />
+          <NavigationProperty Name="tblRegion" Relationship="Self.FK_tblRegionsHolidays_tblRegions" FromRole="tblRegionsHolidays" ToRole="tblRegions" />
+        </EntityType>
+        <EntityType Name="tblTimeSheetBooking">
+          <Key>
+            <PropertyRef Name="TimeSheetID" />
+          </Key>
+          <Property Name="TimeSheetID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MemberID" Type="Int32" />
+          <Property Name="Type" Type="Boolean" />
+          <Property Name="Hours" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="StatusID" Type="Int32" />
+          <Property Name="WeekEndingDate" Type="DateTime" Precision="3" />
+          <Property Name="ApprovedBy" Type="Int32" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Int32" />
+          <NavigationProperty Name="tblMemberdetail" Relationship="Self.FK_tblTimeSheetBooking_tblMemberdetails" FromRole="tblTimeSheetBooking" ToRole="tblMemberdetails" />
+          <NavigationProperty Name="tblTimeSheetStatu" Relationship="Self.FK_tblTimeSheetBooking_tblTimeSheetStatus" FromRole="tblTimeSheetBooking" ToRole="tblTimeSheetStatus" />
+        </EntityType>
+        <EntityType Name="tblTimeSheetStatu">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Int32" />
+          <NavigationProperty Name="tblTimeSheetBookings" Relationship="Self.FK_tblTimeSheetBooking_tblTimeSheetStatus" FromRole="tblTimeSheetStatus" ToRole="tblTimeSheetBooking" />
+        </EntityType>
+        <EntityType Name="tblPagerPlan">
+          <Key>
+            <PropertyRef Name="PagerPlanId" />
+            <PropertyRef Name="MemberId" />
+            <PropertyRef Name="PagerId" />
+            <PropertyRef Name="StartDate" />
+            <PropertyRef Name="EndDate" />
+          </Key>
+          <Property Name="PagerPlanId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="Int32" Nullable="false" />
+          <Property Name="PagerId" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="tblMemberdetail" Relationship="Self.FK_tblPagerPlan_tblMemberdetails" FromRole="tblPagerPlan" ToRole="tblMemberdetails" />
+          <NavigationProperty Name="tblPager" Relationship="Self.FK_tblPagerPlan_tblPager" FromRole="tblPagerPlan" ToRole="tblPager" />
+        </EntityType>
+        <Association Name="FK_tblApplicationAccessRelationship_tblAccessDetails">
+          <End Role="tblAccessDetails" Type="Self.tblAccessDetail" Multiplicity="1" />
+          <End Role="tblApplicationAccessRelationship" Type="Self.tblApplicationAccessRelationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAccessDetails">
+              <PropertyRef Name="AccessId" />
+            </Principal>
+            <Dependent Role="tblApplicationAccessRelationship">
+              <PropertyRef Name="AccessId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMemberAccess_tblAccessDetails">
+          <End Role="tblAccessDetails" Type="Self.tblAccessDetail" Multiplicity="1" />
+          <End Role="tblMemberAccess" Type="Self.tblMemberAccess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAccessDetails">
+              <PropertyRef Name="AccessId" />
+            </Principal>
+            <Dependent Role="tblMemberAccess">
+              <PropertyRef Name="AccessId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblApplicationAccessRelationship_tblApplication">
+          <End Role="tblApplication" Type="Self.tblApplication" Multiplicity="1" />
+          <End Role="tblApplicationAccessRelationship" Type="Self.tblApplicationAccessRelationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblApplication">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="tblApplicationAccessRelationship">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblApplicationSupport_tblApplication">
+          <End Role="tblApplication" Type="Self.tblApplication" Multiplicity="1" />
+          <End Role="tblApplicationSupport" Type="Self.tblApplicationSupport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblApplication">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="tblApplicationSupport">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMemberAccess_tblApplication">
+          <End Role="tblApplication" Type="Self.tblApplication" Multiplicity="1" />
+          <End Role="tblMemberAccess" Type="Self.tblMemberAccess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblApplication">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="tblMemberAccess">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPager_tblApplication">
+          <End Role="tblApplication" Type="Self.tblApplication" Multiplicity="1" />
+          <End Role="tblPager" Type="Self.tblPager" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblApplication">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="tblPager">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblApplicationSupport_tblMemberdetails">
+          <End Role="tblMemberdetails" Type="Self.tblMemberdetail" Multiplicity="1" />
+          <End Role="tblApplicationSupport" Type="Self.tblApplicationSupport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMemberdetails">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="tblApplicationSupport">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblBillingRateInfo_tblMemberdetails">
+          <End Role="tblMemberdetails" Type="Self.tblMemberdetail" Multiplicity="1" />
+          <End Role="tblBillingRateInfo" Type="Self.tblBillingRateInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMemberdetails">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="tblBillingRateInfo">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMemberLeaveDetails_tblHolidays">
+          <End Role="tblHolidays" Type="Self.tblHoliday" Multiplicity="0..1" />
+          <End Role="tblMemberLeaveDetails" Type="Self.tblMemberLeaveDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHolidays">
+              <PropertyRef Name="HolidayId" />
+            </Principal>
+            <Dependent Role="tblMemberLeaveDetails">
+              <PropertyRef Name="HolidayID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRegionsHolidays_tblHolidays">
+          <End Role="tblHolidays" Type="Self.tblHoliday" Multiplicity="1" />
+          <End Role="tblRegionsHolidays" Type="Self.tblRegionsHoliday" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHolidays">
+              <PropertyRef Name="HolidayId" />
+            </Principal>
+            <Dependent Role="tblRegionsHolidays">
+              <PropertyRef Name="HolidayId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMemberLeaveDetails_tblLeaveType">
+          <End Role="tblLeaveType" Type="Self.tblLeaveType" Multiplicity="0..1" />
+          <End Role="tblMemberLeaveDetails" Type="Self.tblMemberLeaveDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLeaveType">
+              <PropertyRef Name="LeaveTypeID" />
+            </Principal>
+            <Dependent Role="tblMemberLeaveDetails">
+              <PropertyRef Name="LeaveTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMemberAccess_tblMemberdetails">
+          <End Role="tblMemberdetails" Type="Self.tblMemberdetail" Multiplicity="1" />
+          <End Role="tblMemberAccess" Type="Self.tblMemberAccess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMemberdetails">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="tblMemberAccess">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMemberLeaveDetails_tblMemberdetails">
+          <End Role="tblMemberdetails" Type="Self.tblMemberdetail" Multiplicity="0..1" />
+          <End Role="tblMemberLeaveDetails" Type="Self.tblMemberLeaveDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMemberdetails">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="tblMemberLeaveDetails">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPagerPlan_tblMemberdetails">
+          <End Role="tblMemberdetails" Type="Self.tblMemberdetail" Multiplicity="1" />
+          <End Role="tblPagerPlan" Type="Self.tblPagerPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMemberdetails">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="tblPagerPlan">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProjectCodeForMembers_tblMemberdetails">
+          <End Role="tblMemberdetails" Type="Self.tblMemberdetail" Multiplicity="0..1" />
+          <End Role="tblProjectCodeForMembers" Type="Self.tblProjectCodeForMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMemberdetails">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="tblProjectCodeForMembers">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTimeSheetBooking_tblMemberdetails">
+          <End Role="tblMemberdetails" Type="Self.tblMemberdetail" Multiplicity="0..1" />
+          <End Role="tblTimeSheetBooking" Type="Self.tblTimeSheetBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMemberdetails">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="tblTimeSheetBooking">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPagerPlan_tblPager">
+          <End Role="tblPager" Type="Self.tblPager" Multiplicity="1" />
+          <End Role="tblPagerPlan" Type="Self.tblPagerPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPager">
+              <PropertyRef Name="PagerId" />
+            </Principal>
+            <Dependent Role="tblPagerPlan">
+              <PropertyRef Name="PagerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProjectCodeForMembers_tblProjectCodes">
+          <End Role="tblProjectCodes" Type="Self.tblProjectCode" Multiplicity="0..1" />
+          <End Role="tblProjectCodeForMembers" Type="Self.tblProjectCodeForMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProjectCodes">
+              <PropertyRef Name="ProjectCodeID" />
+            </Principal>
+            <Dependent Role="tblProjectCodeForMembers">
+              <PropertyRef Name="ProjectCodeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRegionsHolidays_tblRegions">
+          <End Role="tblRegions" Type="Self.tblRegion" Multiplicity="1" />
+          <End Role="tblRegionsHolidays" Type="Self.tblRegionsHoliday" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRegions">
+              <PropertyRef Name="RegionId" />
+            </Principal>
+            <Dependent Role="tblRegionsHolidays">
+              <PropertyRef Name="RegionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTimeSheetBooking_tblTimeSheetStatus">
+          <End Role="tblTimeSheetStatus" Type="Self.tblTimeSheetStatu" Multiplicity="0..1" />
+          <End Role="tblTimeSheetBooking" Type="Self.tblTimeSheetBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTimeSheetStatus">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="tblTimeSheetBooking">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TeamManager_NMOEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="tblAccessDetails" EntityType="Self.tblAccessDetail" />
+          <EntitySet Name="tblApplications" EntityType="Self.tblApplication" />
+          <EntitySet Name="tblApplicationAccessRelationships" EntityType="Self.tblApplicationAccessRelationship" />
+          <EntitySet Name="tblApplicationSupports" EntityType="Self.tblApplicationSupport" />
+          <EntitySet Name="tblBillingRateInfoes" EntityType="Self.tblBillingRateInfo" />
+          <EntitySet Name="tblHolidays" EntityType="Self.tblHoliday" />
+          <EntitySet Name="tblLeaveTypes" EntityType="Self.tblLeaveType" />
+          <EntitySet Name="tblMemberAccesses" EntityType="Self.tblMemberAccess" />
+          <EntitySet Name="tblMemberdetails" EntityType="Self.tblMemberdetail" />
+          <EntitySet Name="tblMemberLeaveDetails" EntityType="Self.tblMemberLeaveDetail" />
+          <EntitySet Name="tblPagers" EntityType="Self.tblPager" />
+          <EntitySet Name="tblProjectCodeForMembers" EntityType="Self.tblProjectCodeForMember" />
+          <EntitySet Name="tblProjectCodes" EntityType="Self.tblProjectCode" />
+          <EntitySet Name="tblRegions" EntityType="Self.tblRegion" />
+          <EntitySet Name="tblRegionsHolidays" EntityType="Self.tblRegionsHoliday" />
+          <EntitySet Name="tblTimeSheetBookings" EntityType="Self.tblTimeSheetBooking" />
+          <EntitySet Name="tblTimeSheetStatus" EntityType="Self.tblTimeSheetStatu" />
+          <EntitySet Name="tblPagerPlans" EntityType="Self.tblPagerPlan" />
+          <AssociationSet Name="FK_tblApplicationAccessRelationship_tblAccessDetails" Association="Self.FK_tblApplicationAccessRelationship_tblAccessDetails">
+            <End Role="tblAccessDetails" EntitySet="tblAccessDetails" />
+            <End Role="tblApplicationAccessRelationship" EntitySet="tblApplicationAccessRelationships" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMemberAccess_tblAccessDetails" Association="Self.FK_tblMemberAccess_tblAccessDetails">
+            <End Role="tblAccessDetails" EntitySet="tblAccessDetails" />
+            <End Role="tblMemberAccess" EntitySet="tblMemberAccesses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblApplicationAccessRelationship_tblApplication" Association="Self.FK_tblApplicationAccessRelationship_tblApplication">
+            <End Role="tblApplication" EntitySet="tblApplications" />
+            <End Role="tblApplicationAccessRelationship" EntitySet="tblApplicationAccessRelationships" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblApplicationSupport_tblApplication" Association="Self.FK_tblApplicationSupport_tblApplication">
+            <End Role="tblApplication" EntitySet="tblApplications" />
+            <End Role="tblApplicationSupport" EntitySet="tblApplicationSupports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMemberAccess_tblApplication" Association="Self.FK_tblMemberAccess_tblApplication">
+            <End Role="tblApplication" EntitySet="tblApplications" />
+            <End Role="tblMemberAccess" EntitySet="tblMemberAccesses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPager_tblApplication" Association="Self.FK_tblPager_tblApplication">
+            <End Role="tblApplication" EntitySet="tblApplications" />
+            <End Role="tblPager" EntitySet="tblPagers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblApplicationSupport_tblMemberdetails" Association="Self.FK_tblApplicationSupport_tblMemberdetails">
+            <End Role="tblMemberdetails" EntitySet="tblMemberdetails" />
+            <End Role="tblApplicationSupport" EntitySet="tblApplicationSupports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblBillingRateInfo_tblMemberdetails" Association="Self.FK_tblBillingRateInfo_tblMemberdetails">
+            <End Role="tblMemberdetails" EntitySet="tblMemberdetails" />
+            <End Role="tblBillingRateInfo" EntitySet="tblBillingRateInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMemberLeaveDetails_tblHolidays" Association="Self.FK_tblMemberLeaveDetails_tblHolidays">
+            <End Role="tblHolidays" EntitySet="tblHolidays" />
+            <End Role="tblMemberLeaveDetails" EntitySet="tblMemberLeaveDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRegionsHolidays_tblHolidays" Association="Self.FK_tblRegionsHolidays_tblHolidays">
+            <End Role="tblHolidays" EntitySet="tblHolidays" />
+            <End Role="tblRegionsHolidays" EntitySet="tblRegionsHolidays" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMemberLeaveDetails_tblLeaveType" Association="Self.FK_tblMemberLeaveDetails_tblLeaveType">
+            <End Role="tblLeaveType" EntitySet="tblLeaveTypes" />
+            <End Role="tblMemberLeaveDetails" EntitySet="tblMemberLeaveDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMemberAccess_tblMemberdetails" Association="Self.FK_tblMemberAccess_tblMemberdetails">
+            <End Role="tblMemberdetails" EntitySet="tblMemberdetails" />
+            <End Role="tblMemberAccess" EntitySet="tblMemberAccesses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMemberLeaveDetails_tblMemberdetails" Association="Self.FK_tblMemberLeaveDetails_tblMemberdetails">
+            <End Role="tblMemberdetails" EntitySet="tblMemberdetails" />
+            <End Role="tblMemberLeaveDetails" EntitySet="tblMemberLeaveDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPagerPlan_tblMemberdetails" Association="Self.FK_tblPagerPlan_tblMemberdetails">
+            <End Role="tblMemberdetails" EntitySet="tblMemberdetails" />
+            <End Role="tblPagerPlan" EntitySet="tblPagerPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProjectCodeForMembers_tblMemberdetails" Association="Self.FK_tblProjectCodeForMembers_tblMemberdetails">
+            <End Role="tblMemberdetails" EntitySet="tblMemberdetails" />
+            <End Role="tblProjectCodeForMembers" EntitySet="tblProjectCodeForMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTimeSheetBooking_tblMemberdetails" Association="Self.FK_tblTimeSheetBooking_tblMemberdetails">
+            <End Role="tblMemberdetails" EntitySet="tblMemberdetails" />
+            <End Role="tblTimeSheetBooking" EntitySet="tblTimeSheetBookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPagerPlan_tblPager" Association="Self.FK_tblPagerPlan_tblPager">
+            <End Role="tblPager" EntitySet="tblPagers" />
+            <End Role="tblPagerPlan" EntitySet="tblPagerPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProjectCodeForMembers_tblProjectCodes" Association="Self.FK_tblProjectCodeForMembers_tblProjectCodes">
+            <End Role="tblProjectCodes" EntitySet="tblProjectCodes" />
+            <End Role="tblProjectCodeForMembers" EntitySet="tblProjectCodeForMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRegionsHolidays_tblRegions" Association="Self.FK_tblRegionsHolidays_tblRegions">
+            <End Role="tblRegions" EntitySet="tblRegions" />
+            <End Role="tblRegionsHolidays" EntitySet="tblRegionsHolidays" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTimeSheetBooking_tblTimeSheetStatus" Association="Self.FK_tblTimeSheetBooking_tblTimeSheetStatus">
+            <End Role="tblTimeSheetStatus" EntitySet="tblTimeSheetStatus" />
+            <End Role="tblTimeSheetBooking" EntitySet="tblTimeSheetBookings" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TeamManager_NMOModelStoreContainer" CdmEntityContainer="TeamManager_NMOEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="TeamManager_NMOModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAccessDetails">
+            <EntityTypeMapping TypeName="TeamManager_NMOModel.tblAccessDetail">
+              <MappingFragment StoreEntitySet="tblAccessDetails">
+                <ScalarProperty Name="AccessId" ColumnName="AccessId" />
+                <ScalarProperty Name="AccessName" ColumnName="AccessName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblApplications">
+            <EntityTypeMapping TypeName="TeamManager_NMOModel.tblApplication">
+              <MappingFragment StoreEntitySet="tblApplication">
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblApplicationAccessRelationships">
+            <EntityTypeMapping TypeName="TeamManager_NMOModel.tblApplicationAccessRelationship">
+              <MappingFragment StoreEntitySet="tblApplicationAccessRelationship">
+                <ScalarProperty Name="ApplicationAccessRelationshipID" ColumnName="ApplicationAccessRelationshipID" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="AccessId" ColumnName="AccessId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblApplicationSupports">
+            <EntityTypeMapping TypeName="TeamManager_NMOModel.tblApplicationSupport">
+              <MappingFragment StoreEntitySet="tblApplicationSupport">
+                <ScalarProperty Name="ApplicatioSupportId" ColumnName="ApplicatioSupportId" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBillingRateInfoes">
+            <EntityTypeMapping TypeName="TeamManager_NMOModel.tblBillingRateInfo">
+              <MappingFragment StoreEntitySet="tblBillingRateInfo">
+                <ScalarProperty Name="BillingRateId" ColumnName="BillingRateId" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblHolidays">
+            <EntityTypeMapping TypeName="TeamManager_NMOModel.tblHoliday">
+              <MappingFragment StoreEntitySet="tblHolidays">
+                <ScalarProperty Name="HolidayId" ColumnName="HolidayId" />
+                <ScalarProperty Name="HolidayName" ColumnName="HolidayName" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="IsMandatory" ColumnName="IsMandatory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLeaveTypes">
+            <EntityTypeMapping TypeName="TeamManager_NMOModel.tblLeaveType">
+              <MappingFragment StoreEntitySet="tblLeaveType">
+                <ScalarProperty Name="LeaveTypeID" ColumnName="LeaveTypeID" />
+                <ScalarProperty Name="LeaveType" ColumnName="LeaveType" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMemberAccesses">
+            <EntityTypeMapping TypeName="TeamManager_NMOModel.tblMemberAccess">
+              <MappingFragment StoreEntitySet="tblMemberAccess">
+                <ScalarProperty Name="MemberAccessId" ColumnName="MemberAccessId" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="AccessId" ColumnName="AccessId" />
+                <ScalarProperty Name="IsHavingAccess" ColumnName="IsHavingAccess" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMemberdetails">
+            <EntityTypeMapping TypeName="TeamManager_NMOModel.tblMemberdetail">
+              <MappingFragment StoreEntitySet="tblMemberdetails">
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="MemberName" ColumnName="MemberName" />
+                <ScalarProperty Name="PsaId" ColumnName="PsaId" />
+                <ScalarProperty Name="CgiLanId" ColumnName="CgiLanId" />
+                <ScalarProperty Name="BellNtId" ColumnName="BellNtId" />
+                <ScalarProperty Name="BellPein" ColumnName="BellPein" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="MangerId" ColumnName="MangerId" />
+                <ScalarProperty Name="LaptopNumber" ColumnName="LaptopNumber" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="MsnId" ColumnName="MsnId" />
+                <ScalarProperty Name="CgiJoinDate" ColumnName="CgiJoinDate" />
+                <ScalarProperty Name="ProjectJoinDate" ColumnName="ProjectJoinDate" />
+                <ScalarProperty Name="IsReleasedFromProject" ColumnName="IsReleasedFromProject" />
+                <ScalarProperty Name="ProjectRelivingDate" ColumnName="ProjectRelivingDate" />
+                <ScalarProperty Name="InCgi" ColumnName="InCgi" />
+                <ScalarProperty Name="CgiRelievingDate" ColumnName="CgiRelievingDate" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="IsResourceManager" ColumnName="IsResourceManager" />
+                <ScalarProperty Name="IsSelfManager" ColumnName="IsSelfManager" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMemberLeaveDetails">
+            <EntityTypeMapping TypeName="TeamManager_NMOModel.tblMemberLeaveDetail">
+              <MappingFragment StoreEntitySet="tblMemberLeaveDetails">
+                <ScalarProperty Name="EntryID" ColumnName="EntryID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="LeaveTypeID" ColumnName="LeaveTypeID" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="HolidayID" ColumnName="HolidayID" />
+                <ScalarProperty Name="LeaveStartDate" ColumnName="LeaveStartDate" />
+                <ScalarProperty Name="LeaveEndDate" ColumnName="LeaveEndDate" />
+                <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPagers">
+            <EntityTypeMapping TypeName="TeamManager_NMOModel.tblPager">
+              <MappingFragment StoreEntitySet="tblPager">
+                <ScalarProperty Name="PagerId" ColumnName="PagerId" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="PagerNumber" ColumnName="PagerNumber" />
+                <ScalarProperty Name="PagerEmailId" ColumnName="PagerEmailId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProjectCodeForMembers">
+            <EntityTypeMapping TypeName="TeamManager_NMOModel.tblProjectCodeForMember">
+              <MappingFragment StoreEntitySet="tblProjectCodeForMembers">
+                <ScalarProperty Name="DefaultTimesheetID" ColumnName="DefaultTimesheetID" />
+                <ScalarProperty Name="ProjectCodeID" ColumnName="ProjectCodeID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProjectCodes">
+            <EntityTypeMapping TypeName="TeamManager_NMOModel.tblProjectCode">
+              <MappingFragment StoreEntitySet="tblProjectCodes">
+                <ScalarProperty Name="ProjectCodeID" ColumnName="ProjectCodeID" />
+                <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+                <ScalarProperty Name="ProjectDescription" ColumnName="ProjectDescription" />
+                <ScalarProperty Name="TrackingParameterName" ColumnName="TrackingParameterName" />
+                <ScalarProperty Name="TotalFunds" ColumnName="TotalFunds" />
+                <ScalarProperty Name="UsedFunds" ColumnName="UsedFunds" />
+                <ScalarProperty Name="RemainingFunds" ColumnName="RemainingFunds" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="PerMonthLimit" ColumnName="PerMonthLimit" />
+                <ScalarProperty Name="CanCrossMonthLimit" ColumnName="CanCrossMonthLimit" />
+                <ScalarProperty Name="IsClosed" ColumnName="IsClosed" />
+                <ScalarProperty Name="IsDefaultCode" ColumnName="IsDefaultCode" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRegions">
+            <EntityTypeMapping TypeName="TeamManager_NMOModel.tblRegion">
+              <MappingFragment StoreEntitySet="tblRegions">
+                <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+                <ScalarProperty Name="RegionName" ColumnName="RegionName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRegionsHolidays">
+            <EntityTypeMapping TypeName="TeamManager_NMOModel.tblRegionsHoliday">
+              <MappingFragment StoreEntitySet="tblRegionsHolidays">
+                <ScalarProperty Name="RegionHoildayRelationshipId" ColumnName="RegionHoildayRelationshipId" />
+                <ScalarProperty Name="HolidayId" ColumnName="HolidayId" />
+                <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTimeSheetBookings">
+            <EntityTypeMapping TypeName="TeamManager_NMOModel.tblTimeSheetBooking">
+              <MappingFragment StoreEntitySet="tblTimeSheetBooking">
+                <ScalarProperty Name="TimeSheetID" ColumnName="TimeSheetID" />
+                <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Hours" ColumnName="Hours" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="WeekEndingDate" ColumnName="WeekEndingDate" />
+                <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTimeSheetStatus">
+            <EntityTypeMapping TypeName="TeamManager_NMOModel.tblTimeSheetStatu">
+              <MappingFragment StoreEntitySet="tblTimeSheetStatus">
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPagerPlans">
+            <EntityTypeMapping TypeName="TeamManager_NMOModel.tblPagerPlan">
+              <MappingFragment StoreEntitySet="tblPagerPlan">
+                <ScalarProperty Name="PagerPlanId" ColumnName="PagerPlanId" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="PagerId" ColumnName="PagerId" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
